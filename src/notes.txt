@@ -1,0 +1,86 @@
+$ yarn global add live-server
+$ yarn global add babel-cli
+
+$ yarn add live-server babel-cli@6.26.0 // this one is a better choice
+
+$ cd /home/juancho/GIT/react-course-projects/indecision-app
+$ live-server public/
+$ babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
+//playground
+$ babel src/playground/es6-let-const.js --out-file=public/scripts/app.js --presets=env,react --watch
+
+$ yarn init //initialize the yarn file
+
+$ yarn add babel-preset-react@6.24.1 babel-preset-env@1.6.1
+
+$ babel src/app.js --out-file=public/scripts/app.js --presets=env,react
+
+$ yarn install //install the configured packages
+
+$ yarn run serve // run the alias configured in packages.json
+
+$ yarn add webpack@3.10.0
+$ yarn add validator@9.4.0
+$ yarn add react@16.2.0 react-dom@16.2.0
+$ yarn add babel-core@6.26.0 babel-loader@7.1.2
+$ yarn add webpack-dev-server@2.11.1
+$ yarn add babel-plugin-transform-class-properties@6.24.1
+$ yarn add react-modal@3.1.13
+$ yarn add css-loader@0.28.9 style-loader@0.20.1
+$ yarn add sass-loader@6.0.6 node-sass@4.7.2
+$ yarn add normalize.css@8.0.0
+
+$ node webpack.config.js
+
+scripts
+    // build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
+
+local url:
+http://localhost:8080/
+
+
+https://babeljs.io/docs/plugins/transform-class-properties/
+https://code.visualstudio.com/docs/getstarted/keybindings
+https://github.com/reactjs/react-modal
+https://github.com/webpack/webpack
+https://necolas.github.io/normalize.css/
+https://sass-lang.com/
+http://sass-lang.com/documentation/Sass/Script/Functions.html
+https://webpack.js.org/
+https://www.npmjs.com
+https://reacttraining.com/react-router/web/guides/philosophy
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+https://github.com/kriasoft/react-starter-kit
+Test with ngrok issue: https://stackoverflow.com/a/45494621
+
+
+
+
+as the actions go off, the state will change
+
+./ -> dot forward    ///    barebone JS // react-router -> react hyphen router
+x * x -> x times x
+
+I am gonna head over to that page // so how do we overcome this?
+
+test@gmail.com -> test add gmail dot com
+webpack-dev-server -> webpack hyphen dev hyphen server // yaring
+
+so stay tunned, I see you there // is not feasible
+
+so this is the structure that we are gonna be using forward
+
+super snappy
+
+http://indecision.mead.io/
+
+to make sure everything is being wired up correctly
+
+and the modal will go away
+
+and I am gonna go ahead and crack open Webpack (abrir el archivo dando doble click sobre el mismo)
+
+1.6rem 0 -> and we are gonna use 1.6rem followed by zero
+
+pretty yaringly
