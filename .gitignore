@@ -5,3 +5,6 @@
 
 # logs
 yarn-error.log*
+
+# vs code configuration
+/.vscode
