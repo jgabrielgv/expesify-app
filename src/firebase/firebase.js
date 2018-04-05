@@ -12,31 +12,98 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-database.ref().set({
-    name: 'Juan Gabriel',
-    age: 26,
-    isSingle: false,
-    location: {
-        city: 'Grecia',
-        country: 'Costa Rica'
-    }
-}).then(() => {
-    console.log('Data is saved!');
-}).catch((error) => {
-    console.log('This failed', error);
+// database.ref('location/city')
+//   .once('value')
+//   .then((snapshot) => {
+//     const value = snapshot.val();
+//     console.log(value);
+//   })
+//   .catch((e) => {
+//     console.log('Error fetching data', e);
+//   });
+
+const onValueChanged = database.ref().on('value', (snapshot) => {
+    const { name, job: { title, company } } = snapshot.val();
+    const text = `${name} is a ${title} at ${company}`;
+    console.log(text);
+}, (e) => {
+    console.log('Error with data fetching', e);
 });
 
-// database.ref().
+setTimeout(() => {
+    // change the data
+    database.ref().update({
+        age: 25
+    });
+}, 3500);
 
-// firebase.database().ref().set('This is my data');
-// database.ref('age').set(27);
-// database.ref('location/city').set('Naranjo');
+// const onValueChanged = (snapshot) => {
+//     console.log(snapshot.val());
+// };
 
-database.ref('attributes').set({
-    height: 178,
-    weight: 88
-}).then(() => {
-    console.log('Attributes saved!');
-}).catch((error) => {
-    console.log('Save attributes task failed!', error);
-});
+// const onValueChanged = database.ref().on('value', (snapshot) => {
+//   console.log(snapshot.val());
+// }, (e) => {
+//     console.log('Error with data fetching', e);
+// });
+
+// setTimeout(() => {
+//   database.ref('age').set(29);
+// }, 3500);
+
+// setTimeout(() => {
+//     database.ref().off(onValueChanged);
+//   }, 7000);
+
+//   setTimeout(() => {
+//     database.ref('age').set(30);
+//   }, 10500);
+
+// database.ref().set({
+//     name: 'Juan Gabriel',
+//     age: 26,
+//     stressLevel: 6,
+//     job: { 
+//         title: 'Software Developer',
+//         company: 'Google'
+//     },
+//     location: {
+//         city: 'Grecia',
+//         country: 'Costa Rica'
+//     }
+// }).then(() => {
+//     console.log('Data is saved!');
+// }).catch((error) => {
+//     console.log('This failed', error);
+// });
+
+// database.ref().update({
+//   stressLevel: 9,
+//   'job/company': 'Twitter',
+//   'location/city': 'Naranjo'
+// });
+
+// database.ref().update({
+//     name: 'Angel',
+//     age: 25,
+//     job: 'Software Developer',
+//     isSingle: null
+// });
+
+// database.ref().update({
+//   job: 'Scrum Master',
+//   'location/city': 'Escazu'
+// });
+
+
+
+// database.ref('isSingle').set(null);
+
+// database.ref('isSingle')
+// .remove()
+// .then(() => {
+//   console.log('Data removed!');
+// })
+// .catch((error) => {
+//   console.log('An error occurred removing a value', error);
+// });
