@@ -12,6 +12,63 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
+database.ref('expenses')
+.once('value')
+.then((snapshot) => {
+    const expenses = [];
+    snapshot.forEach((childSnapshop) => {
+        expenses.push({
+            id: childSnapshop.key,
+            ...childSnapshop.val()
+        });
+    });
+    console.log(expenses);
+});
+
+// database.ref('expenses').push({
+//     description: 'Rent',
+//     note: '',
+//     amount: 109500,
+//     createdAt: 976123498763
+// });
+
+// const notes = database.ref('notes/-L9NQGD-gTmn6Wh7CPyY').update({
+//     body: 'Buy food'
+// });
+
+// database.ref('notes').push({
+//     title: 'Course Topics',
+//     body: 'React Native, Angular, Python'
+// });
+
+// const firebaseNotes = {
+//     notes: {
+//        first: {
+//             id: '12',
+//             title: 'First note!',
+//             body: 'This is my note'
+//         },
+//         second: {
+//             id: '761ase',
+//             title: 'Another note',
+//             body: 'This is my note'
+//         }
+//     }
+// };
+
+// const notes = [{
+//     id: '12',
+//     title: 'First note!',
+//     body: 'This is my note'
+// }, {
+//     id: '761ase',
+//     title: 'Another note',
+//     body: 'This is my note'
+// }];
+
+// database.ref('notes').set(notes);
+
+
 // database.ref('location/city')
 //   .once('value')
 //   .then((snapshot) => {
@@ -22,20 +79,20 @@ const database = firebase.database();
 //     console.log('Error fetching data', e);
 //   });
 
-const onValueChanged = database.ref().on('value', (snapshot) => {
-    const { name, job: { title, company } } = snapshot.val();
-    const text = `${name} is a ${title} at ${company}`;
-    console.log(text);
-}, (e) => {
-    console.log('Error with data fetching', e);
-});
+// const onValueChanged = database.ref().on('value', (snapshot) => {
+//     const { name, job: { title, company } } = snapshot.val();
+//     const text = `${name} is a ${title} at ${company}`;
+//     console.log(text);
+// }, (e) => {
+//     console.log('Error with data fetching', e);
+// });
 
-setTimeout(() => {
-    // change the data
-    database.ref().update({
-        age: 25
-    });
-}, 3500);
+// setTimeout(() => {
+//     // change the data
+//     database.ref().update({
+//         age: 25
+//     });
+// }, 3500);
 
 // const onValueChanged = (snapshot) => {
 //     console.log(snapshot.val());
