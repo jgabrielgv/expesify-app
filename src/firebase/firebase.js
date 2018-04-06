@@ -12,18 +12,45 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-database.ref('expenses')
-.once('value')
-.then((snapshot) => {
-    const expenses = [];
-    snapshot.forEach((childSnapshop) => {
-        expenses.push({
-            id: childSnapshop.key,
-            ...childSnapshop.val()
-        });
-    });
-    console.log(expenses);
-});
+export { firebase, database as default };
+
+// database.ref('expenses').on('child_removed', (snapshot) => {
+//   console.log('Expense removed', snapshot.key, snapshot.val());
+// });
+
+// database.ref('expenses').on('child_changed', (snapshot) => {
+//     console.log('Expense updated', snapshot.key, snapshot.val());
+//   });
+
+//   database.ref('expenses').on('child_added', (snapshot) => {
+//     console.log('Expense added', snapshot.key, snapshot.val());
+//   });
+
+// database.ref('expenses').on('value', (snapshot) => {
+//   const expenses = [];
+//   snapshot.forEach((childSnapshot) => {
+//     expenses.push({
+//       id: childSnapshot.key,
+//       ...childSnapshot.val()
+//     });
+//   });
+//   console.log('Expenses', expenses);
+// }, (e) => {
+//     console.log('An error occured retrieving the values', e);
+// });
+
+// database.ref('expenses')
+// .once('value')
+// .then((snapshot) => {
+//     const expenses = [];
+//     snapshot.forEach((childSnapshop) => {
+//         expenses.push({
+//             id: childSnapshop.key,
+//             ...childSnapshop.val()
+//         });
+//     });
+//     console.log(expenses);
+// });
 
 // database.ref('expenses').push({
 //     description: 'Rent',
