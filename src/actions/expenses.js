@@ -44,6 +44,7 @@ export const setExpenses = (expenses) => ({
     expenses
 });
 
+// load the expenses for the first time
 export const startSetExpenses = () => {
     return (dispatch) => {
         return database.ref('expenses').once('value').then((snapshot) => {
@@ -55,6 +56,24 @@ export const startSetExpenses = () => {
                 });
             });
             dispatch(setExpenses(expenses));
+        });
+    };
+};
+
+export const startRemoveExpense = ({ id } = {}) => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).remove().then(() => {
+            dispatch(removeExpense({ id }));
+        });
+    };
+};
+
+export const startEditExpense = (id, updates) => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).update({
+            ...updates
+        }).then(() => {
+            dispatch(editExpense(id, updates));
         });
     };
 };
