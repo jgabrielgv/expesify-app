@@ -24,7 +24,7 @@ test('should add an expense', () => {
         amount: 100,
         createdAt: 345600000
     };
-    const action = {  
+    const action = {
         type: 'ADD_EXPENSE',
         expense
     };
@@ -34,7 +34,7 @@ test('should add an expense', () => {
 
 test('should edit an expense', () => {
     const amount = 122000;
-    const action = {  
+    const action = {
         type: 'EDIT_EXPENSE',
         id: expenses[1].id,
         updates: {
@@ -47,7 +47,7 @@ test('should edit an expense', () => {
 
 test('should not edit an expense if id not found', () => {
     const amount = 122000;
-    const action = {  
+    const action = {
         type: 'EDIT_EXPENSE',
         id: '-1',
         updates: {
@@ -62,11 +62,20 @@ test('should edit an expense testing whole array', () => {
     const updates =  {
         description: 'Globes',
     };
-    const action = {  
+    const action = {
         type: 'EDIT_EXPENSE',
         id: expenses[2].id,
         updates
     };
     const state = expensesReducer(expenses, action);
     expect(state).toEqual([expenses[0],expenses[1],{ ...expenses[2], ...updates }]);
+});
+
+test('should set expenses', () => {
+    const action = {
+        type: 'SET_EXPENSES',
+        expenses: [expenses[1]]
+    }
+    const state = expensesReducer(expenses, action);
+    expect(state).toEqual([expenses[1]]);
 });

@@ -1,23 +1,6 @@
 import uuid from 'uuid';
 import database from '../firebase/firebase';
 
-// component calls action generator
-// action generator returns object
-// component dispatches object
-// redux store changes
-
-// to
-
-// component calls action generator
-// action generator returns function
-// component dispatches function (?)
-// function runs (has the ability to dispatch other actions and do whatever it wants)
-
-// use push
-// attach then callback
-// dispatch action
-// redirect
-
 // ADD_EXPENSE
 export const addExpense = (expense) => ({
     type: 'ADD_EXPENSE',
@@ -54,3 +37,41 @@ export const editExpense = (id, updates) => ({
     id,
     updates
 });
+
+// SET_EXPENSES
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses
+});
+
+export const startSetExpenses = () => {
+    return (dispatch) => {
+        return database.ref('expenses').once('value').then((snapshot) => {
+            const expenses = [];
+            snapshot.forEach((childSnapshot) => {
+                expenses.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+            dispatch(setExpenses(expenses));
+        });
+    };
+};
+
+// component calls action generator
+// action generator returns object
+// component dispatches object
+// redux store changes
+
+// to
+
+// component calls action generator
+// action generator returns function
+// component dispatches function (?)
+// function runs (has the ability to dispatch other actions and do whatever it wants)
+
+// use push
+// attach then callback
+// dispatch action
+// redirect
