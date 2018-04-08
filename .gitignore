@@ -11,3 +11,7 @@ yarn-error.log*
 
 # build generated files
 /public/dist
+
+# firebase keys
+.env.development
+.env.test
