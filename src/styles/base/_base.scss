@@ -3,9 +3,10 @@ html {
 }
 
 body {
+    color: $dark-grey;
     font-family: Helvetica, Arial, sans-serif;
     font-size: $m-size;
-    box-sizing: border-box;
+    line-height: 1.6;
 }
 
 button {
@@ -17,34 +18,5 @@ button:disabled {
 }
 
 .is-active {
-    font-weight: bold;   
+    font-weight: bold;
 }
-
-/* Always set the map height explicitly to define the size of the div
-        * element that contains the map. */
-// #map {
-//     height: 100%;
-//     position: fixed !important;
-//     width: 100%;
-// }
-// /* Optional: Makes the sample page fill the window. */
-// html, body {
-//     height: 100%;
-//     margin: 10%;
-//     padding: 0;
-// }
-
-.CalendarDay__highlighted_calendar {
-    background: #82E0AA;
-    color: #186A3B;
-  }
-  
-  .CalendarDay__highlighted_calendar:hover {
-    background: #58D68D;
-    color: #186A3B;
-  }
-  
-  .CalendarDay__highlighted_calendar:active {
-    background: #58D68D;
-    color: #186A3B;
-  }
